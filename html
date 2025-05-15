@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shape Generator</title>
+</head>
+<body>
+    <h1>Shape Generator</h1>
+    <pre id="output"></pre>
+
+    <script>
+        function isNumeric(value) {
+            return !isNaN(value) && value.trim() !== "";
+        }
+
+        function getUserNumber() {
+            let input;
+            do {
+                input = prompt("Please enter a number:");
+            } while (!isNumeric(input));
+            return parseInt(input);
+        }
+
+        function generateRectangle(size) {
+            let output = "";
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    output += (j + 1) + " ";
+                }
+                output += "\n";
+            }
+            return output;
+        }
+
+        function generateTriangle(size) {
+            let output = "";
+            for (let i = 1; i <= size; i++) {
+                for (let j = 1; j <= i; j++) {
+                    output += j + " ";
+                }
+                output += "\n";
+            }
+            return output;
+        }
+
+        const number = getUserNumber();
+        const result = number % 2 === 0 ? generateTriangle(number) : generateRectangle(number);
+        document.getElementById("output").textContent = result;
+    </script>
+</body>
+</html>
